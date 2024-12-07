@@ -1,0 +1,12 @@
+# FastAPI and its dependencies
+fastapi==0.115.2
+uvicorn==0.32.0
+
+# Sambanova (OpenAI API compatible)
+openai==0.28.0
+
+# Pydantic for schemas
+pydantic==2.9.2
+
+# Python-dotenv for managing environment variables
+python-dotenv==1.0.0
