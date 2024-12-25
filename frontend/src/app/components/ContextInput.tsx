@@ -1,10 +1,18 @@
 "use client";
 import React from "react";
 
-export default function ContextInput({ value, onChange }) {
+// Define the type for the props
+interface ContextInputProps {
+  value: string; // The current value of the input
+  onChange: (value: string) => void; // Function to handle changes in the input
+}
+
+export default function ContextInput({ value, onChange }: ContextInputProps) {
   return (
     <div className="space-y-3">
-      <label className="block text-lg font-medium text-gray-700">Custom Context</label>
+      <label className="block text-lg font-medium text-gray-700">
+        Custom Context
+      </label>
       <textarea
         value={value}
         onChange={(e) => onChange(e.target.value)}
