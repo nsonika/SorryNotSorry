@@ -2,6 +2,12 @@
 import React from "react";
 import { Briefcase, Users, Heart, Plus } from "lucide-react";
 
+// Define the type for the props
+interface CategorySelectorProps {
+  selectedCategory: string; // The selected category ID
+  onSelectCategory: (id: string) => void; // Function to handle category selection
+}
+
 const categories = [
   { id: "work", icon: Briefcase, label: "Work" },
   { id: "social", icon: Users, label: "Social" },
@@ -9,7 +15,10 @@ const categories = [
   { id: "custom", icon: Plus, label: "Custom" },
 ];
 
-export default function CategorySelector({ selectedCategory, onSelectCategory }) {
+export default function CategorySelector({
+  selectedCategory,
+  onSelectCategory,
+}: CategorySelectorProps) {
   return (
     <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
       {categories.map(({ id, icon: Icon, label }) => (
