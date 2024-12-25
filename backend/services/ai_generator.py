@@ -9,19 +9,23 @@ openai.api_base = SAMBANOVA_BASE_URL
 def generate_excuse(category: str, humor_level: int, custom_context: str = None) -> str:
     try:
         # Create the input prompt for the Sambanova model
+        custom_context_str = f"Custom Context: {custom_context}\n" if custom_context else ""
+        
         prompt = (
             f"You are a witty and creative bot that generates excuses. "
             f"Category: {category}\n"
             f"Humor Level (1=Serious, 3=Ridiculous): {humor_level}\n"
-            f"{f'Custom Context: {custom_context}\n' if custom_context else ''}"
+            f"{custom_context_str}"
             "Generate a short, clever, and engaging excuse:"
         )
         
         # Call Sambanova's API
         response = openai.ChatCompletion.create(
             model="Meta-Llama-3.2-3B-Instruct",
-            messages=[{"role": "system", "content": "You are a helpful assistant."},
-                      {"role": "user", "content": prompt}],
+            messages=[
+                {"role": "system", "content": "You are a helpful assistant."},
+                {"role": "user", "content": prompt}
+            ],
             temperature=0.7
         )
 
